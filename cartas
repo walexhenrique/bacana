@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+class cartas{
+	public static void main(String[] args){
+		Scanner tecla = new Scanner(System.in);
+		int rodadas = tecla.nextInt();
+		int quebra = 0;
+		int clemer;
+		int juza;
+		int totalPC = 0;
+		int totalPJ =0;
+		int moedaPC =0;
+		int moedaPJ = 0;
+		while(rodadas > quebra){
+			clemer = tecla.nextInt();
+			juza = tecla.nextInt();
+			totalPC += clemer;
+			totalPJ += juza;
+			if(totalPC > totalPJ){
+				moedaPC++;
+			}else if(totalPC < totalPJ){
+				moedaPJ++;
+			}else{
+				moedaPC++;
+				moedaPJ++;
+			}
+			quebra++;
+		}
+		if(moedaPC > moedaPJ){
+			System.out.println("C");
+		}else if(moedaPJ > moedaPC){
+			System.out.println("J");
+		}else {
+			System.out.println("E");
+		}
+	}
+}
