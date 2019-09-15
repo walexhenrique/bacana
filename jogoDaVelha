@@ -1,0 +1,145 @@
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner tecla = new Scanner(System.in);
+    String[][] matriz = new String[3][3];
+    System.out.println("Quer oque?\n0 = Digite 0 (Primeiro a jogar).\n1 = Digite 1 (Segundo a jogar).");
+    int escolha = tecla.nextInt();
+    for(int x = 0; x < 3; x++){
+      for(int y = 0; y < 3; y++){
+        matriz[x][y] = "-";
+      }
+    }
+    /*System.out.println("X | 0 | 0\nX | 0 | 0\nX | 0 | 0");*/
+    int cont = 0;
+    
+    if(escolha == 0){
+      while(true){
+        Random gerador = new Random();
+        System.out.println(matriz[0][0] + " | " + matriz[0][1] + " | " + matriz[0][2]+"\n"+matriz[1][0] + " | " + matriz[1][1] + " | " + matriz[1][2] + "\n" + matriz[2][0] + " | " + matriz[2][1] + " | " + matriz[2][2]);
+        System.out.println("Escolha um numero de 1 a 9 (Esquerda para a direita!");
+        cont++;
+      if(cont == 8){
+        break;
+      }
+        int numero = tecla.nextInt();
+        if(numero > 0 && numero <= 3){
+          if(matriz[0][numero - 1].equals("-")){
+            matriz[0][numero - 1] = "0";
+          }else{
+            System.out.println("Perdeu sua vez!");
+          }
+        }else if(numero >= 4 && numero <= 6){
+          if(matriz[1][numero%3].equals("-")){
+            matriz[1][numero%3] = "0";
+          }else{
+            System.out.println("Perdeu sua vez!");
+          }
+        }else if(numero >= 7 && numero <= 9){
+          if(matriz[2][numero % 7].equals("-")){
+            matriz[2][numero % 7] = "0";
+          }else{
+            System.out.println("Perdeu sua vez!");
+          }
+        }
+        int computer = gerador.nextInt(9);
+        if(computer >= 0 && computer <= 2 && (matriz[0][0].equals("-") || matriz[0][1].equals("-") || matriz[0][2].equals("-"))){
+          if(matriz[0][computer].equals("-")){
+            matriz[0][computer] = "X";
+          }else{
+            while(true){
+              computer = gerador.nextInt(3);
+              if(matriz[0][computer].equals("-")){
+                matriz[0][computer] = "X";
+                break;
+              }
+            }
+          }
+        }else if(computer >= 3 && computer <= 5 && (matriz[1][0].equals("-") || matriz[1][1].equals("-") || matriz[1][2].equals("-"))){
+          if(matriz[0][computer % 3].equals("-")){
+            matriz[0][computer % 3] = "X";
+          }else{
+            while(true){
+              computer = gerador.nextInt(3);
+              if(matriz[1][computer].equals("-")){
+                matriz[1][computer] = "X";
+                break;
+              }
+            }}
+        }else if(computer >= 6 && computer <= 8 && (matriz[2][0].equals("-") || matriz[2][1].equals("-") || matriz[2][2].equals("-"))){
+          if(matriz[0][computer % 6].equals("-")){
+            matriz[0][computer % 6] = "X";
+          }else{
+            while(true){
+              computer = gerador.nextInt(3);
+              if(matriz[2][computer].equals("-")){
+                matriz[2][computer] = "X";
+                break;
+              }
+            }}
+        }
+
+      
+      }
+    }else if(escolha == 1){
+
+    }else{
+      System.out.println("Vai se fuder, aqui é um ou outro, que merda!");
+    }
+
+    if(matriz[0][0] == matriz[0][1] && matriz[0][1] == matriz[0][2]){
+      if(matriz[0][0].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else if(matriz[1][0] == matriz[1][1] && matriz[1][2] == matriz[1][1]){
+      if(matriz[1][0].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else if(matriz[2][0] == matriz[2][1] && matriz[2][2] == matriz[2][1]){
+      if(matriz[2][0].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else if(matriz[0][0] == matriz[1][1] && matriz[2][2] == matriz[1][1]){
+      if(matriz[0][0].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else if(matriz[0][2] == matriz[1][1] && matriz[2][0] == matriz[1][1]){
+      if(matriz[0][2].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else if(matriz[0][0] == matriz[1][0] && matriz[1][0] == matriz[2][0]){
+      if(matriz[0][0].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else if(matriz[0][1] == matriz[1][1] && matriz[1][1] == matriz[2][1]){
+      if(matriz[0][1].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else if(matriz[0][2] == matriz[1][2] && matriz[1][2] == matriz[2][2]){
+      if(matriz[0][2].equals("0")){
+        System.out.println("Voce ganhou!");
+      }else{
+        System.out.println("Perdeu!");
+      }
+    }else{
+      System.out.println("Empate");
+    }
+    
+    
+    /*System.out.println("X | 0 | 0\nX | 0 | 0\nX | 0 | 0");*/
+  }
+}
